@@ -1,0 +1,20 @@
+# Use official Node.js image
+FROM node
+
+ENV MONGO_DB_USERNAME= admin \
+    MONGO_DB_PASSWORD= admin
+
+# Set working directory /ostad-server
+WORKDIR /ostad-server
+
+# Copy backend code from OstadServer/
+COPY OstadServer/ .
+
+# Install dependencies (npm install)
+RUN npm install
+
+# Expose port 5050
+EXPOSE 5050
+
+# Command to run server: node server.js
+CMD ["node", server.js]
